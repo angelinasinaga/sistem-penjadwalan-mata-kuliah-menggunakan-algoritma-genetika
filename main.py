@@ -7,9 +7,9 @@ Kelas.kelas = [Kelas("11SI1", 20), Kelas("11SI2", 22), Kelas("12SI1", 30),
                Kelas("12SI2", 30), Kelas("13SI1", 28), Kelas('13I2', 25)]
 
 Dosen.dosen = [Dosen("Mr. Mario Simaremare"), Dosen("Mr. Tennov"), Dosen("Mrs. Parmonangan"),
-                Dosen("Mrs.Junita"), Dosen("Mr. Samuel"), Dosen("Mr. Humasak")]
+                Dosen("Mrs. Junita"), Dosen("Mr. Samuel"), Dosen("Mr. Humasak")]
 
-CourseClass.classes = [CourseClass("KUS1002"),CourseClass("MAS1101"),CourseClass("KUS1002"),CourseClass("TIS1101"),
+CourseClass.classes = [CourseClass("KUS1002"),CourseClass("MAS1101"),CourseClass("KUS2002"),CourseClass("TIS1101"),
                        CourseClass("KUS1001"),CourseClass("FIS1103"),CourseClass("12S1101"),
                         CourseClass("TIS3001")]
 
@@ -55,19 +55,19 @@ def convert_input_to_bin():
 
     cpg = [CourseClass.find("KUS1002"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("13SI1"),
            CourseClass.find("FIS1103"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("13SI1"),
-           CourseClass.find("KUS1001"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("11SI1"),
+           CourseClass.find("KUS1001"), Dosen.find("Mrs. Junita"), Kelas.find("11SI1"),
            CourseClass.find("TIS1101"), Dosen.find("Mr. Humasak"), Kelas.find("13SI2"),
-           CourseClass.find("KUS1002"), Dosen.find("Mr. Samuel"), Kelas.find("13SI2"),
+           CourseClass.find("KUS2002"), Dosen.find("Mr. Samuel"), Kelas.find("13SI2"),
            CourseClass.find("MAS1101"), Dosen.find("Mr. Tennov"), Kelas.find("11SI2"),
-           CourseClass.find("KUS1002"), Dosen.find("Mrs. Junita"), Kelas.find("12SI1"),
-           CourseClass.find("KUS2001"), Dosen.find("Mrs. Parmonangan"), Kelas.find("13SI2"),
+           CourseClass.find("KUS1001"), Dosen.find("Mrs. Junita"), Kelas.find("12SI1"),
+           CourseClass.find("KUS2002"), Dosen.find("Mrs. Parmonangan"), Kelas.find("13SI2"),
            CourseClass.find("KUS1002"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("13SI2"),
            CourseClass.find("FIS1103"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("13SI2"),
-           CourseClass.find("KUS1001"), Dosen.find("Mr. Mario Simaremare"), Kelas.find("11SI2"),
-           CourseClass.find("TIS1101"), Dosen.find("Mr. Humasak"), Kelas.find("13SI1"),
-           CourseClass.find("KUS1002"), Dosen.find("Mr. Samuel"), Kelas.find("13SI1"),
+           CourseClass.find("KUS1001"), Dosen.find("Mrs. Junita"), Kelas.find("11SI2"),
+           CourseClass.find("TIS3001"), Dosen.find("Mr. Humasak"), Kelas.find("13SI1"),
+           CourseClass.find("KUS2002"), Dosen.find("Mr. Samuel"), Kelas.find("13SI1"),
            CourseClass.find("MAS1101"), Dosen.find("Mr. Tennov"), Kelas.find("11SI1"),
-           CourseClass.find("KUS1002"), Dosen.find("Mrs. Junita"), Kelas.find("12SI2"),
+           CourseClass.find("KUS1001"), Dosen.find("Mrs. Junita"), Kelas.find("12SI2"),
            CourseClass.find("KUS2001"), Dosen.find("Mrs. Parmonangan"), Kelas.find("13SI2")
            ]
 
@@ -316,10 +316,11 @@ def simulated_annealing():
             population = new_solution
             old_cost = new_cost
         T = T * alpha
-    # print(population)
-    # print("Cost of altered solution: ", cost(population[0]))
-
+    print("\n----------------------- Schedule -----------------------\n")
+    for lec in population[0]:
+        print_chromosome(lec)
     print("Score: ", evaluate(population[0]))
+
 
 def genetic_algorithm():
     generation = 0
@@ -328,7 +329,7 @@ def genetic_algorithm():
 
     # print("Original population:")
     # print(population)
-    print("\n------------- Schedule --------------\n")
+    print("\n------------- Genetic Algorithm --------------\n")
     while True:
         
         # if termination criteria are satisfied, stop.
